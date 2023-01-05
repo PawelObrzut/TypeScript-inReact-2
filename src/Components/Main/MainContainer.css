@@ -1,0 +1,14 @@
+.mainContainer {
+  list-style: none;
+  width: 100%;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+.mainContainerItem {
+  width: 100%;
+  border-bottom: solid 1px #000;
+  text-align: left;
+  padding: 1rem;
+}

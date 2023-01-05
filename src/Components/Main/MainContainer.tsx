@@ -1,5 +1,5 @@
-import React from 'react'
 import { PuppieData } from "../../types";
+import './MainContainer.css';
 
 interface MainContainerProps {
   puppies: PuppieData[]
@@ -7,10 +7,11 @@ interface MainContainerProps {
 
 const MainContainer = ({ puppies }: MainContainerProps) => {
   return (
-    <ul>
-      {puppies.map(puppy => (
-        <li key={puppy.id}>
-          {puppy.name}
+    <ul className="mainContainer">
+      {puppies.map((puppy: PuppieData) => (
+        <li className="mainContainerItem" key={puppy.id}>
+            <p>Id: {puppy.id}</p>
+            <p> Name: {puppy.name}</p>
         </li>
       ))}
     </ul>
