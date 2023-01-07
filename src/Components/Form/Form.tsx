@@ -1,11 +1,11 @@
 import React, { MouseEvent, useRef } from 'react'
 import './Form.css';
 
-// interface FromProps {
-//   handleSubmit: (event: React.MouseEventHandler<HTMLInputElement>) => void
-// }
+interface FromProps {
+  addNewPuppy: (name: string | undefined, breed: string | undefined, birthDate: string | undefined) => void
+}
 
-const Form = () => {
+const Form = ({ addNewPuppy }: FromProps) => {
  
   const inputName = useRef<HTMLInputElement>(null)
   const inputBreed = useRef<HTMLInputElement>(null)
@@ -14,9 +14,10 @@ const Form = () => {
   
   const handleSubmit = (event: MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
-    console.log('Name ', inputName.current?.value)
-    console.log('Breed ', inputBreed.current?.value)
-    console.log('Date Of Birth ', inputBirthDate.current?.value)
+    const name = inputName.current?.value;
+    const breed =  inputBreed.current?.value
+    const birthDate = inputBirthDate.current?.value
+    addNewPuppy(name, breed, birthDate);
     inputForm?.reset();
   }
  
@@ -28,7 +29,7 @@ const Form = () => {
       <input className="inputFormText" type="text" id="breed" ref={inputBreed}/>
       <label className="labelForm" htmlFor="dateOfBirth">Date of Birth</label>
       <input className="inputFormText" type="text" id="dateOfBirth" ref={inputBirthDate}/>
-      <input className="inputFormSubmit" type="submit" value="Register a New Puppy" onClick={handleSubmit} />
+      <input className="inputFormSubmit" type="submit" value="Register New Puppy" onClick={handleSubmit} />
     </form>
   )
 }
