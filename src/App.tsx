@@ -35,6 +35,22 @@ const App = () => {
       });
   }
 
+  const deletePuppy = (id: string) => {
+    fetch(`http://localhost:8080/api/puppies/${id}`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('An Error ocurred');
+        }
+        getPuppiesData();
+      })
+      .catch(error => {
+        console.log(error)
+      });
+  }
+
   useEffect(() => {
     getPuppiesData();
   }, [])
@@ -43,7 +59,7 @@ const App = () => {
     <div className="App">
       <Header title="Puppies API with TypeScript"/>
       <Form addNewPuppy={addNewPuppy} />
-      <MainContainer puppies={puppies} />
+      <MainContainer deletePuppy={deletePuppy} puppies={puppies} />
     </div>
   );
 }

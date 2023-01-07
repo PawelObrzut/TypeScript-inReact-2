@@ -1,5 +1,5 @@
 export interface PuppieData {
-  id: number,
+  id: string,
   name: string,
   breed: string,
   birthDate: string,
