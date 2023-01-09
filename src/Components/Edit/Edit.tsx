@@ -40,8 +40,8 @@ const Edit = ({active, setActiveForm, editPuppy, setEditPuppy, updatePuppy} : Ed
         <label className="editFormLabel">Date of Birth</label>
         <input className="editFormInput" type="text" value={editPuppy.birthDate} name="birthDate" onChange={handleChange} />
 
-        <button className="editPuppyFormBtn" onClick={handleCancel}>Cancel</button>
-        <button className="editPuppyFormBtn" onClick={handleUpdate}>Update</button>
+        <button className="editPuppyFormBtn" type="button" onClick={handleCancel}>Cancel</button>
+        <button className="editPuppyFormBtn" type="submit" onClick={handleUpdate}>Update</button>
       </form>
     </section>
   ) : <></>
