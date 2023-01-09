@@ -35,6 +35,23 @@ const App = () => {
       });
   }
 
+  const updatePuppy = ({id, name, breed, birthDate}: PuppieData):void=> {
+    fetch(`http://localhost:8080/api/puppies/${id}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json',},
+      body: JSON.stringify({ id, name,  breed, birthDate })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('An Error ocurred');
+        }
+        getPuppiesData();
+      })
+      .catch(error => {
+        console.log(error)
+      });
+  }
+
   const deletePuppy = (id: string) => {
     fetch(`http://localhost:8080/api/puppies/${id}`, {
       method: 'DELETE',
@@ -59,7 +76,7 @@ const App = () => {
     <div className="App">
       <Header title="Puppies API with TypeScript"/>
       <Form addNewPuppy={addNewPuppy} />
-      <MainContainer deletePuppy={deletePuppy} puppies={puppies} />
+      <MainContainer updatePuppy={updatePuppy} deletePuppy={deletePuppy} puppies={puppies} />
     </div>
   );
 }

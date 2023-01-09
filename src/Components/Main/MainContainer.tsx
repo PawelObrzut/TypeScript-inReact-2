@@ -6,10 +6,18 @@ import { useState } from "react";
 interface MainContainerProps {
   puppies: PuppieData[]
   deletePuppy: (id: string) => void
+  updatePuppy: ({ id, name, breed, birthDate }: PuppieData) => void
 }
 
-const MainContainer = ({ puppies, deletePuppy }: MainContainerProps) => {
+const MainContainer = ({ puppies, deletePuppy, updatePuppy }: MainContainerProps) => {
   const [activeForm, setActiveForm] = useState(false)
+
+  const [editPuppy, setEditPuppy] = useState({
+    id: "",
+    name: "",
+    breed: "",
+    birthDate: "",
+  })
   
   return (
     <>
@@ -22,6 +30,12 @@ const MainContainer = ({ puppies, deletePuppy }: MainContainerProps) => {
               <button 
                 onClick={event => {
                   event.stopPropagation();
+                  setEditPuppy({
+                    id: puppy.id,
+                    name: puppy.name,
+                    breed: puppy.breed,
+                    birthDate: puppy.birthDate
+                  })
                   setActiveForm(activeForm => !activeForm)
                 }}>Edit</button>
 
@@ -33,7 +47,7 @@ const MainContainer = ({ puppies, deletePuppy }: MainContainerProps) => {
           </li>
         ))}
       </ul>
-      <Edit active={activeForm} setActiveForm={setActiveForm}/>
+      <Edit updatePuppy={updatePuppy} active={activeForm} editPuppy={editPuppy} setEditPuppy={setEditPuppy} setActiveForm={setActiveForm}/>
     </>
   )
 }
