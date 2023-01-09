@@ -16,7 +16,7 @@ const MainContainer = ({ puppies, deletePuppy, updatePuppy }: MainContainerProps
     id: "",
     name: "",
     breed: "",
-    birthDate: "",
+    birthDate: new Date(),
   })
   
   return (
