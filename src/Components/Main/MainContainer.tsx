@@ -17,34 +17,44 @@ const MainContainer = ({ puppies, deletePuppy, updatePuppy }: MainContainerProps
     name: "",
     breed: "",
     birthDate: new Date(),
+    url: ""
   })
   
   return (
     <>
-      <ul className="mainContainer">
-        {puppies.map((puppy: PuppieData): JSX.Element => {
+      <ul className="listContainer">
+        {puppies.map((puppy: PuppieData, index): JSX.Element => {
           return (
-            <li className="mainContainerItem" key={puppy.id}>
-                <p>Id: {puppy.id}</p>
-                <p> Name: {puppy.name}</p>
+            <li className="listItem " key={index}>
 
-                <button 
-                  onClick={event => {
-                    event.stopPropagation();
-                    setEditPuppy({
-                      id: puppy.id,
-                      name: puppy.name,
-                      breed: puppy.breed,
-                      birthDate: puppy.birthDate
-                    })
-                    setActiveForm(activeForm => !activeForm)
-                  }}>Edit</button>
+              <article className="listItemCard">
+                <img className="listItemCardImg" src={puppy.url} alt={puppy.breed} />
+                <div className="listItemCardText">
+                  <h3>{puppy.name}</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eum aliquid rerum tempora saepe!
+                    Illum id delectus sed magnam mollitia.</p>
+                    <button 
+                      className="listItemCardBtn"
+                      onClick={event => {
+                        event.stopPropagation();
+                        setEditPuppy({
+                          id: puppy.id,
+                          name: puppy.name,
+                          breed: puppy.breed,
+                          birthDate: puppy.birthDate,
+                          url: puppy.url
+                        })
+                        setActiveForm(activeForm => !activeForm)
+                      }}>Edit</button>
 
-                <button 
-                  onClick={event => {
-                    event.stopPropagation();
-                    deletePuppy(puppy.id)
-                  }}>Remove</button>
+                    <button
+                      className="listItemCardBtn"
+                      onClick={event => {
+                        event.stopPropagation();
+                        deletePuppy(puppy.id)
+                      }}>Remove</button>
+                </div>
+              </article>
             </li>
           )
         })}

@@ -3,4 +3,5 @@ export interface PuppieData {
   name: string,
   breed: string,
   birthDate: Date,
+  url: string
 }

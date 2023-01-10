@@ -38,7 +38,7 @@ const Edit = ({active, setActiveForm, editPuppy, setEditPuppy, updatePuppy} : Ed
         <label className="editFormLabel">Breed</label>
         <input className="editFormInput" type="text" value={editPuppy.breed} name="breed" onChange={handleChange} />
         <label className="editFormLabel">Date of Birth</label>
-        <input className="editFormInput" type="date" value={editPuppy.birthDate.toString().split("/").reverse().join("-")} name="birthDate" onChange={handleChange} />
+        <input className="editFormDate" type="date" value={editPuppy.birthDate.toString().split('T')[0]} name="birthDate" onChange={handleChange} />
 
 
         <button className="editPuppyFormBtn" type="button" onClick={handleCancel}>Cancel</button>

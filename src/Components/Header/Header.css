@@ -1,11 +1,14 @@
 .headerTitle {
   text-align: center;
-  background-color: rgb(236, 236, 236);
+  box-shadow: 0 0.1rem 1rem -0.5rem;
+  border: solid 0.1rem #000;
+  border-radius: 0.25rem;
   width: 80%;
   margin: auto;
 }
 
 .headerTitle h1 {
-  margin: 0;
+  margin: 0 auto;
   padding: 1rem;
+  width: 80%;
 }
